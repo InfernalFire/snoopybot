@@ -909,7 +909,7 @@ function handleEval(message, args)
 					.setTitle("Evaled:", false)
 					.setColor(0x59f75f)
 					.addField("Evaled: :inbox_tray:",  `\`\`\`js\n${code}\n\`\`\``, false)
-					.addField("Output: :outbox_tray:", `\`\`\`js\n%{clean(evaled)}\n\`\`\``, false)
+					.addField("Output: :outbox_tray:", `\`\`\`js\n${clean(evaled)}\n\`\`\``, false)
 					.setFooter("Credits to ThatMajesticGuy#7530 for this Eval Command!")
 					message.channel.send(embed2);
 			} catch (err) {
