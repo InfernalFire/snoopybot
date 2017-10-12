@@ -633,6 +633,27 @@ var commands = [
 		}
 	},
 
+		// -> Uptime
+		{
+			command: "Uptime",
+			command_aliases: [],
+			description: "Shows how long the bot has been online for.",
+			args: [],
+			admin: false,
+			exec: function(message, params)
+			{
+				// Actual Code
+				var embed = new _discord.RichEmbed()
+				.setAuthor("Uptime - " + config.handles.title, config.handles.icon_url)
+				.addField("I've been online for:", bot.uptime	, true)
+				.setColor(0x00AE86)
+				.setThumbnail(config.handles.icon_url)
+				.setTimestamp()
+				.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+				message.channel.send(embed)
+			}
+		},
+
 		// => Get Avatar
 		{
 			command: "avatar",
@@ -648,6 +669,7 @@ var commands = [
 				var embed2 = new _discord.RichEmbed()
 				.setAuthor("Avatar - " + config.handles.title, config.handles.icon_url)
 				.addField("Username:", message.author.tag, true)
+				.addField("Your Avatar:", message.author.avatarURL)
 				.addField("Avatar URL:", message.author.displayAvatarURL, true)
 				.setColor(0x00AE86)
 				.setThumbnail(config.handles.icon_url)
@@ -784,8 +806,8 @@ var commands = [
 ];
 //-------------------------->
 // -> Handlers
-bot.on("message", message => 
-       {
+bot.on("message", async message => 
+{
 	// > Ignore messages which we don't need to process
     if(message.author.bot)
 		return;
