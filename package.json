@@ -1,7 +1,6 @@
 {
   "name": "snoopy",
   "version": "0.5",
-  "description": "Googly bot -- NOT A GOOGLE BOT",
   "main": "main.js",
   "author": "snoopy#6927",
   "scripts": {
