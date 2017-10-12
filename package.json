@@ -2,19 +2,19 @@
   "name": "Scrooge-Mc-Bot",
   "version": "1.0.2",
   "description": "A Beta Bot",
-  "main": "node index.js",
+  "main": "node main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node main.js"
   },
   "engines": {
     "node": "8.6.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThatMajesticGuy/scrooge-mc-bot-discord-bot"
+    "url": "git+https://github.com/PotPlease/snoopybot"
   },
-  "author": "ThatMajesticGuy",
+  "author": "snoop#6927",
   "license": "MIT"
   },
   "dependencies": {
