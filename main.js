@@ -806,7 +806,7 @@ var commands = [
 ];
 //-------------------------->
 // -> Handlers
-bot.on("message", async message => 
+bot.on("message", message => 
 {
 	// > Ignore messages which we don't need to process
     if(message.author.bot)
