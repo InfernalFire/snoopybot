@@ -633,27 +633,6 @@ var commands = [
 		}
 	},
 
-		// -> Uptime
-		{
-			command: "Uptime",
-			command_aliases: [],
-			description: "Shows how long the bot has been online for.",
-			args: [],
-			admin: false,
-			exec: function(message, params)
-			{
-				// Actual Code
-				var embed = new _discord.RichEmbed()
-				.setAuthor("Uptime - " + config.handles.title, config.handles.icon_url)
-				.addField("I've been online for:", bot.uptime	, true)
-				.setColor(0x00AE86)
-				.setThumbnail(config.handles.icon_url)
-				.setTimestamp()
-				.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
-				message.channel.send(embed)
-			}
-		},
-
 		// => Get Avatar
 		{
 			command: "avatar",
