@@ -849,7 +849,7 @@ bot.on('ready', () =>
 	handleMusic_Setup();
 });
 
-bot.login(config.tokens.discord_token);
+bot.login(PROCESS.ENV.config.tokens.discord_token);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
