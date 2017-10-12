@@ -1,0 +1,22 @@
+{
+  "name": "googly",
+  "version": "0.5",
+  "description": "Googly bot -- NOT A GOOGLE BOT",
+  "main": "index.js",
+  "author": "snoopy#6927",
+  "license": "ISC",
+  "dependencies": {
+    "cool-ascii-faces": "1.3.4",
+    "discord-playlist": "^1.1.1",
+    "discord.js": "^11.2.1",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "fs": "0.0.1-security",
+    "get-youtube-id": "^1.0.0",
+    "moment": "^2.19.0",
+    "opusscript": "0.0.3",
+    "request": "^2.83.0",
+    "util": "^0.10.3",
+    "youtube-info": "^1.1.2",
+    "ytdl-core": "^0.17.1"
+  }
+}
