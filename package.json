@@ -4,7 +4,9 @@
   "description": "Googly bot -- NOT A GOOGLE BOT",
   "main": "main.js",
   "author": "snoopy#6927",
-  "license": "ISC",
+  "scripts": {
+    "start": "node main.js"
+  },
   "dependencies": {
     "cool-ascii-faces": "1.3.4",
     "discord-playlist": "^1.1.1",
