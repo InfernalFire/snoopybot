@@ -1,8 +1,8 @@
 {
-  "name": "googly",
+  "name": "snoopy",
   "version": "0.5",
   "description": "Googly bot -- NOT A GOOGLE BOT",
-  "main": "index.js",
+  "main": "main.js",
   "author": "snoopy#6927",
   "license": "ISC",
   "dependencies": {
