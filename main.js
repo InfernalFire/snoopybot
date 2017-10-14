@@ -1,8 +1,8 @@
 //-------------------------->
-// Discord Bot #TeamSimple
+// Discord Bot #SnoopyBot
 //-------------------------->
-// Developed by Reece Benson
-// a.k.a. yhSimple © 2017
+// Developed by Alex Hernandez
+// a.k.a. snoopy © 2017
 //-------------------------->
 // -> Requirements
 const _discord 	= require("discord.js");
@@ -140,6 +140,42 @@ var commands = [
 		},
 	},
 
+	// -> Uptime
+	{
+		command: "uptime",
+		command_aliases: [],
+		description: "Shows how long I've been up for!",
+		args: [],
+		admin: false,
+		exec: function(message, params)
+		{
+				String.prototype.toHHMMSS = function () {
+						var sec_num = parseInt(this, 10); 
+						var hours   = Math.floor(sec_num / 3600);
+						var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+						var seconds = sec_num - (hours * 3600) - (minutes * 60);
+				
+						if (hours   < 10) {hours   = "0"+hours;}
+						if (minutes < 10) {minutes = "0"+minutes;}
+						if (seconds < 10) {seconds = "0"+seconds;}
+						var time    = "**"+hours+ '** Hours ,**' +minutes+ '** Minutes ,**' +seconds+ ' **seconds';
+						return time;
+				}
+						var time = process.uptime();
+						var uptime = (time + "").toHHMMSS();
+						const embed = new _discord.RichEmbed()
+							.setTitle("Uptime!")
+							.setAuthor(config.handles.title)
+							.setColor(0x00AE86)
+							.setDescription("Retrieved how long I've been up for.")
+							.addField(`I've been up for`, `${uptime}`)
+							.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+						message.channel.send({embed});
+				
+	}
+	
+},
+
 	// -> Ping
 	{
 		command: "ping",
@@ -149,7 +185,7 @@ var commands = [
 		admin: true,
 		exec: function(message, params)
 		{
-			message.channel.send("Ping...").then(m =>
+			message.channel.send("Pinging...").then(m =>
 			{
 				// -> Variables
 				var lat_ms = (m.createdTimestamp - message.createdTimestamp);
