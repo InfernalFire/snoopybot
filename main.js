@@ -884,7 +884,6 @@ bot.on('ready', () =>
 	console.log('[Snoopy] Logged in...');
 	handleMusic_Setup();
 });
-// bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
 bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
