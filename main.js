@@ -648,7 +648,7 @@ var commands = [
 				var embed2 = new _discord.RichEmbed()
 				.setAuthor("Avatar - " + config.handles.title, config.handles.icon_url)
 				.addField("Username:", message.author.tag, true)
-				.addField("Your Avatar:", message.author.displayAvatarURL)
+				.addField("Your Avatar:", message.author.avatarURL)
 				.setColor(0x00AE86)
 				.setThumbnail(config.handles.icon_url)
 				.setTimestamp()
@@ -848,7 +848,7 @@ bot.on('ready', () =>
 	console.log('[Snoopy] Logged in...');
 	handleMusic_Setup();
 });
-
+// bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
 bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
