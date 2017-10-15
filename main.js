@@ -139,6 +139,52 @@ var commands = [
 			}
 		},
 	},
+	
+		// -> coinflip
+		{
+			command: "coinflip",
+			command_aliases: [],
+			description: "Flips a coin!",
+			args: [],
+			admin: false,
+			exec: function(message, params)
+			{
+				var textArray = [
+					"heads!",
+					"tails!"
+					];
+						var hi = Math.floor(Math.random()*textArray.length);
+						var embed = new _discord.RichEmbed()
+						.setAuthor("Coin Flip - " + config.handles.title, config.handles.icon_url)
+						.addField("Coin Flipped:", "And you landed  🔛   " + textArray[hi], true)
+						.setColor(0x700a0a)
+						.setThumbnail(config.handles.icon_url)
+						.setTimestamp()
+						.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+						message.reply({embed});
+			}
+		},
+	
+	// -> roll
+	{
+		command: "roll",
+		command_aliases: [],
+		description: "Rolls a random Number!",
+		args: [],
+		admin: false,
+		exec: function(message, params)
+		{
+			var roll = Math.floor(Math.random() * 30) + 1;
+			var embed = new _discord.RichEmbed()
+			.setAuthor("Rolled Number - " + config.handles.title, config.handles.icon_url)
+			.addField("Roll:", "🎲 You rolled a " + roll, true)
+			.setColor(0x700a0a)
+			.setThumbnail(config.handles.icon_url)
+			.setTimestamp()
+			.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+			message.reply({embed});
+		}
+	},
 
 	// -> Uptime
 	{
