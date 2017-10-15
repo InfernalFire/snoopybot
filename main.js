@@ -864,16 +864,52 @@ bot.on("message", message =>
 	
 });
 
-bot.on('guildMemberAdd', member =>
-{
-	// > Do we have a welcome channel?
-	const channel = member.guild.channels.find('name', 'member-log');
-	if (!channel) return;
-
-	// > Welcome our user and grant them the Member role
-	channel.send(`Welcome to the server, ${member}!`);
-	console.log("[Snoopy] Welcomed new user '" + member);
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'bot-spam');
+if (!channel) return;
+  var textArray = [
+    `${member.user} has come here`,
+    `${member.user},my man, you have entered the realm of severe depression`,
+    `${member.user} you have entered the realm of the totino gods, do you have anything to say?`,
+    `${member.user} Welcome to the discord. You must be crazy for joining.`,
+    `${member.user} Welcome to the server... you are ugly`,
+    `${member.user} has entered hell :)`,
+    `${member.user} is possibly mentally retarted cause he came here...`,
+    `${member.user} came here, i am running out of ideas please help`,
+    `${member.user} has entered the meme magic`,
+    `${member.user} has had a bad case of idiocity cause he is here`,
+    `${member.user} is very loud, but ey, he came here`,
+    `${member.user} came here, Error 404 ${member.user} not found`,
+    `${member.user} is a noob, jk he came here`,
+    `${member.user} has come here to do everything that his destiny tells him to.`
+  ];
+  var Meme = Math.floor(Math.random()*textArray.length);
+  channel.send(`${textArray[Meme]}`)
 });
+
+bot.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', 'bot-spam');
+  if (!channel) return;
+  var textArray = [
+    `***${member.user.tag}*** has died in the death zone`,
+    `***${member.user.tag}*** has left the state of severe deppression`,
+    `Did ***${member.user.tag}*** leave or did he accidently hit the leave button instead of the change nickname button?`,
+    `***${member.user.tag}*** was abused cause he was ugly, so he hit that leave button.`,
+    `***${member.user.tag}*** joined, got triggered, left, simple math.`,
+    `***${member.user.tag}*** has ragequit`,
+    `***${member.user.tag}*** has came here, but left cause of all the toxicity`,
+    `***${member.user.tag}*** has left the meme magic`,
+    `***${member.user.tag}*** has died, rip`,
+    `***${member.user.tag}*** is very loud, but ey, he came here`,
+    `***${member.user.tag}*** went away, oh noes`,
+    `***${member.user.tag}*** went away cause this server is bad, jk it isnt dont sue me plz`,
+    `***${member.user.tag}*** has left... Dinkleburg...`
+  ];
+  var math = Math.floor(Math.random()*textArray.length);
+  channel.send(`${textArray[math]}`)
+});
+
+
 
 bot.on('ready', () =>
 {
