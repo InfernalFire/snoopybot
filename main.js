@@ -820,15 +820,6 @@ var commands = [
 ];
 //-------------------------->
 // -> Handlers
-bot.on("guildCreate", guild => {
-  const channel3 = guild.channels.find('name', 'general');
-  if (!channel3) return guild.owner.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun!")
-  channel3.send("Oh why hello there! Thank you for inviting me to this server! Here are a few things to get started! \n First, make a channel called #mod-log exactly like that if you are planning to use commands, if you dont and use the command, you will need to create the channel and waste time while a bad person is raiding your server. \n Secondly, if you want welcome messages, make a channel called #welcome exactly like that, it will also have goodbye messages also, for right now, we have pre made welcome messages, soon I will try to make it so you can make your own welcome message. \n Third. Make sure nobody blocks the bot, as some commands will not function if they have to DM the user. \n Finally, you MIGHT want to disable advertising by doing sc!advertising no, then it will block advertising discord servers. (THIS HAS NOT BEEN IMPLIMENTED YET, IT WILL SOON!) \nThat is it, have fun!")
-  guild.createChannel("Music-Channel")
-  .then(channel => console.log("Music channel has been created!"))
-  .catch(console.error);
-});
-
 bot.on("message", message => 
 {
 	// > Ignore messages which we don't need to process
@@ -888,7 +879,7 @@ bot.on('ready', () =>
 {
 	// > Initialise bot
     bot.user.setUsername("Snoopy");
-		bot.user.setGame("-help || " + bot.guilds.size + " Guilds");
+		bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
 		bot.user.setStatus('dnd');
 	console.log('[Snoopy] Logged in...');
 	handleMusic_Setup();
