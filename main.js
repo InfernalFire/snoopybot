@@ -937,19 +937,19 @@ bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'bot-spam');
   if (!channel) return;
   var textArray = [
-    `***${member.user.tag}*** has died in the death zone`,
-    `***${member.user.tag}*** has left the state of severe deppression`,
-    `Did ***${member.user.tag}*** leave or did he accidently hit the leave button instead of the change nickname button?`,
-    `***${member.user.tag}*** was abused cause he was ugly, so he hit that leave button.`,
-    `***${member.user.tag}*** joined, got triggered, left, simple math.`,
-    `***${member.user.tag}*** has ragequit`,
-    `***${member.user.tag}*** has came here, but left cause of all the toxicity`,
-    `***${member.user.tag}*** has left the meme magic`,
-    `***${member.user.tag}*** has died, rip`,
-    `***${member.user.tag}*** is very loud, but ey, he came here`,
-    `***${member.user.tag}*** went away, oh noes`,
-    `***${member.user.tag}*** went away cause this server is bad, jk it isnt dont sue me plz`,
-    `***${member.user.tag}*** has left... Dinkleburg...`
+    `***${member.user}*** has died in the death zone`,
+    `***${member.user}*** has left the state of severe deppression`,
+    `Did ***${member.user}*** leave or did he accidently hit the leave button instead of the change nickname button?`,
+    `***${member.user}*** was abused cause he was ugly, so he hit that leave button.`,
+    `***${member.user}*** joined, got triggered, left, simple math.`,
+    `***${member.user}*** has ragequit`,
+    `***${member.user}*** has came here, but left cause of all the toxicity`,
+    `***${member.user}*** has left the meme magic`,
+    `***${member.user}*** has died, rip`,
+    `***${member.user}*** is very loud, but ey, he came here`,
+    `***${member.user}*** went away, oh noes`,
+    `***${member.user}*** went away cause this server is bad, jk it isnt dont sue me plz`,
+    `***${member.user}*** has left... Dinkleburg...`
   ];
   var math = Math.floor(Math.random()*textArray.length);
   channel.send(`${textArray[math]}`)
