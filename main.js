@@ -939,8 +939,7 @@ guild.createChannel('welcome', 'text')
   .catch(console.error);
 });
 
-bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
-// bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
