@@ -140,52 +140,6 @@ var commands = [
 		},
 	},
 	
-		// -> coinflip
-		{
-			command: "coinflip",
-			command_aliases: [],
-			description: "Flips a coin!",
-			args: [],
-			admin: false,
-			exec: function(message, params)
-			{
-				var textArray = [
-					"heads!",
-					"tails!"
-					];
-						var hi = Math.floor(Math.random()*textArray.length);
-						var embed = new _discord.RichEmbed()
-						.setAuthor("Coin Flip - " + config.handles.title, config.handles.icon_url)
-						.addField("Coin Flipped:", "And you landed  🔛   " + textArray[hi], true)
-						.setColor(0x700a0a)
-						.setThumbnail(config.handles.icon_url)
-						.setTimestamp()
-						.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
-						message.reply({embed});
-			}
-		},
-	
-	// -> roll
-	{
-		command: "roll",
-		command_aliases: [],
-		description: "Rolls a random Number!",
-		args: [],
-		admin: false,
-		exec: function(message, params)
-		{
-			var roll = Math.floor(Math.random() * 30) + 1;
-			var embed = new _discord.RichEmbed()
-			.setAuthor("Rolled Number - " + config.handles.title, config.handles.icon_url)
-			.addField("Roll:", "🎲 You rolled a " + roll, true)
-			.setColor(0x700a0a)
-			.setThumbnail(config.handles.icon_url)
-			.setTimestamp()
-			.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
-			message.reply({embed});
-		}
-	},
-
 	// -> Uptime
 	{
 		command: "uptime",
@@ -715,6 +669,31 @@ var commands = [
 		}
 	},
 
+		// -> coinflip
+		{
+			command: "coinflip",
+			command_aliases: [],
+			description: "Flips a coin!",
+			args: [],
+			admin: false,
+			exec: function(message, params)
+			{
+				var textArray = [
+					"heads!",
+					"tails!"
+					];
+						var hi = Math.floor(Math.random()*textArray.length);
+						var embed = new _discord.RichEmbed()
+						.setAuthor("Coin Flip - " + config.handles.title, config.handles.icon_url)
+						.addField("Coin Flipped:", "And you landed  🔛   " + textArray[hi], true)
+						.setColor(0x700a0a)
+						.setThumbnail(config.handles.icon_url)
+						.setTimestamp()
+						.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+						message.reply({embed});
+			}
+		},
+
 		// => Get Avatar
 		{
 			command: "avatar",
@@ -838,6 +817,27 @@ var commands = [
 			// > Send deletion message
 			message.channel.send(`:fingers_crossed: ${(amount-1)} message(s) deleted!`).then((m) => { setTimeout(() => { m.delete(); }, 5000); }).catch("[Snoopy] Message already deleted.");
 		}
+
+	},
+	// -> roll
+	{
+		command: "roll",
+		command_aliases: [],
+		description: "Rolls a random Number!",
+		args: [],
+		admin: false,
+		exec: function(message, params)
+		{
+			var roll = Math.floor(Math.random() * 30) + 1;
+			var embed = new _discord.RichEmbed()
+			.setAuthor("Rolled Number - " + config.handles.title, config.handles.icon_url)
+			.addField("Roll:", "🎲 You rolled a " + roll, true)
+			.setColor(0x700a0a)
+			.setThumbnail(config.handles.icon_url)
+			.setTimestamp()
+			.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+			message.reply({embed});
+		}
 	},
 
 	// -> Prefix
@@ -910,63 +910,37 @@ bot.on("message", message =>
 	
 });
 
-bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'bot-spam');
-if (!channel) return;
-  var textArray = [
-    `${member.user} has come here`,
-    `${member.user},my man, you have entered the realm of severe depression`,
-    `${member.user} you have entered the realm of the totino gods, do you have anything to say?`,
-    `${member.user} Welcome to the discord. You must be crazy for joining.`,
-    `${member.user} Welcome to the server... you are ugly`,
-    `${member.user} has entered hell :)`,
-    `${member.user} is possibly mentally retarted cause he came here...`,
-    `${member.user} came here, i am running out of ideas please help`,
-    `${member.user} has entered the meme magic`,
-    `${member.user} has had a bad case of idiocity cause he is here`,
-    `${member.user} is very loud, but ey, he came here`,
-    `${member.user} came here, Error 404 ${member.user} not found`,
-    `${member.user} is a noob, jk he came here`,
-    `${member.user} has come here to do everything that his destiny tells him to.`
-  ];
-  var Meme = Math.floor(Math.random()*textArray.length);
-  channel.send(`${textArray[Meme]}`)
+bot.on("guildCreate", guild => {
+	const channel3 = guild.channels.find('name', 'general');
+	
+	var embed2 = new _discord.RichEmbed()
+	.setAuthor("Thanks For Inviting Me! - " + config.handles.title, config.handles.icon_url)
+	.addField("Information:", "Hello there!\nThanks for inviting me to your server! Here are a few thing to get started! \nFirstly, To see all of my commands do **-help [pageNumber]** (IN A CHANNEL)\nAnd I well that's everything you need to know me :thinking: Enjoy!", true)
+	.setColor(0x700a0a)
+	.setThumbnail(config.handles.icon_url)
+	.setTimestamp()
+	.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+	message.reply({embed2});
+
+  if (!channel3) return guild.owner.send(embed2)
+	
+	var embed = new _discord.RichEmbed()
+	.setAuthor("Thanks For Inviting Me! - " + config.handles.title, config.handles.icon_url)
+	.addField("Information:", "Hello there!\nThanks for inviting me to your server! Here are a few thing to get started! \nFirstly, To see all of my commands do **-help [pageNumber]** (IN A CHANNEL)\nAnd I well that's everything you need to know me :thinking: Enjoy!", true)
+	.setColor(0x700a0a)
+	.setThumbnail(config.handles.icon_url)
+	.setTimestamp()
+	.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
+	message.reply({embed});
+
+	channel3.send(embed)
+guild.createChannel('welcome', 'text')
+  .then(channel => console.log(`Created new channel ${channel}`))
+  .catch(console.error);
 });
 
-bot.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'bot-spam');
-  if (!channel) return;
-  var textArray = [
-    `***${member.user}*** has died in the death zone`,
-    `***${member.user}*** has left the state of severe deppression`,
-    `Did ***${member.user}*** leave or did he accidently hit the leave button instead of the change nickname button?`,
-    `***${member.user}*** was abused cause he was ugly, so he hit that leave button.`,
-    `***${member.user}*** joined, got triggered, left, simple math.`,
-    `***${member.user}*** has ragequit`,
-    `***${member.user}*** has came here, but left cause of all the toxicity`,
-    `***${member.user}*** has left the meme magic`,
-    `***${member.user}*** has died, rip`,
-    `***${member.user}*** is very loud, but ey, he came here`,
-    `***${member.user}*** went away, oh noes`,
-    `***${member.user}*** went away cause this server is bad, jk it isnt dont sue me plz`,
-    `***${member.user}*** has left... Dinkleburg...`
-  ];
-  var math = Math.floor(Math.random()*textArray.length);
-  channel.send(`${textArray[math]}`)
-});
-
-
-
-bot.on('ready', () =>
-{
-	// > Initialise bot
-    bot.user.setUsername("Snoopy");
-		bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
-		bot.user.setStatus('dnd');
-	console.log('[Snoopy] Logged in...');
-	handleMusic_Setup();
-});
-bot.login(process.env.BOT_TOKEN);
+bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
+// bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
