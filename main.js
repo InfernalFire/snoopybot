@@ -359,7 +359,8 @@ var commands = [
 				if(server.isPlaying && server.queue.length >= 1)
 				{
 					message.channel.send(":musical_note: :arrow_right: Skipped _**" + server.currentSong.title + "_**!");
-					server.queue.end();
+					server.dispatcher.end();
+					server.queue[];
 				}
 				else
 				{
