@@ -948,8 +948,7 @@ bot.on('ready', (message) => {
 	bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
 	});
 
-bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
-// bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
