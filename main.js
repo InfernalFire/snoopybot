@@ -924,7 +924,6 @@ bot.on("guildCreate", guild => {
 	.setThumbnail(config.handles.icon_url)
 	.setTimestamp()
 	.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
-	message.reply({embed2});
 
   if (!channel3) return guild.owner.send(embed2)
 	
@@ -935,8 +934,7 @@ bot.on("guildCreate", guild => {
 	.setThumbnail(config.handles.icon_url)
 	.setTimestamp()
 	.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
-	message.reply({embed});
-
+	
 	channel3.send(embed)
 guild.createChannel('welcome', 'text')
   .then(channel => console.log(`Created new channel ${channel}`))
