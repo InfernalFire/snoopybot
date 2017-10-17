@@ -945,7 +945,11 @@ guild.createChannel('welcome', 'text')
 });
 
 bot.on('ready', (message) => {
-	console.log(`[Snoopy] Ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
+	console.log("---------------Bot info--------------");
+    console.log(`Bot name: ${bot.user.username}`);
+    console.log(`Servers: ${bot.guilds.size}`);
+    console.log(`Users: ${bot.users.size}`);
+    console.log("--------------------------------------");
 	bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
 	});
 
