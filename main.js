@@ -360,7 +360,6 @@ var commands = [
 				{
 					message.channel.send(":musical_note: :arrow_right: Skipped _**" + server.currentSong.title + "_**!");
 					server.dispatcher.end();
-					server.queue[];
 				}
 				else
 				{
