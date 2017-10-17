@@ -27,6 +27,8 @@ var servers = { };
 //-------------------------->
 // -> Command Handling
 var commands = [
+
+	
 	// -> Commands
 	{
 		command: "help",
@@ -136,6 +138,7 @@ var commands = [
 				embed.setFooter(`Listing ${item_count} command(s) - Page [${currentPage}/${totalPages}] - Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
 
 				message.reply({embed}).catch(console.error);
+
 			}
 		},
 	},
@@ -356,7 +359,7 @@ var commands = [
 				if(server.isPlaying && server.queue.length >= 1)
 				{
 					message.channel.send(":musical_note: :arrow_right: Skipped _**" + server.currentSong.title + "_**!");
-					server.dispatcher.end();
+					server.queue.end();
 				}
 				else
 				{
@@ -863,6 +866,7 @@ var commands = [
 			}
 		}
 	}
+	
 ];
 //-------------------------->
 // -> Handlers
@@ -889,7 +893,7 @@ bot.on("message", message =>
 				 console.log(msgAuthor + " tried to send " + msg + " , in a DM, basically he tried to break the bot");
 			 return;
 				 };
-		
+
 	if (bot.user.id === message.author.id) { return }
 	
     if(message.channel.type === "text")
@@ -939,7 +943,13 @@ guild.createChannel('welcome', 'text')
   .catch(console.error);
 });
 
-bot.login(process.env.BOT_TOKEN);
+bot.on('ready', (message) => {
+	console.log(`[Snoopy] Ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers, for a total of ${bot.users.size} users.`);
+	bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
+	});
+
+bot.login("MzYxNTE2ODc1MzQ5NDkxNzEz.DML9KQ.DGVbKjojLhynJzDycUSyNNpQLmI");
+// bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
@@ -1157,7 +1167,14 @@ function handleMusic_SearchYouTubeVideo(query, callback)
 
 function handleMusic_SearchPlaylist(query, callback)
 {
-	
+	_request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + config.tokens.youtube_api, function(error, response, body)
+	{
+		var resp = JSON.parse(body);
+        if(resp.items.length > 0)
+    		callback(resp.items[0].id.videoId.toString());
+        else
+            callback("null");
+	});
 }
 
 function handleMusic_AddToQueue(strId, authorId, guildId)
