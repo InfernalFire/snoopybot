@@ -991,8 +991,7 @@ bot.on('ready', (message) => {
 	handleMusic_Setup();
 	});
 
-bot.login("MzY5NjgxOTQyNzU0NDkyNDE2.DMgVLg.yxqxMyBUHgghuqs9DgH27jq1CDU");
-// bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
