@@ -12,6 +12,8 @@ const _request 	= require("request");
 const _getytid	= require("get-youtube-id");	
 const _fetchvid = require("youtube-info");
 const _moment = require("moment");
+const Enmap = require('enmap');
+const EnmapLevel = require('enmap-level');
 //-------------------------->
 // -> Bot Handling
 const bot 		= new _discord.Client({ autoReconnect: true });
@@ -841,8 +843,23 @@ var commands = [
 			.setFooter(`Developed by ${package.author} - Version ${package.version}`, config.handles.icon_url);
 			message.reply({embed});
 		}
+	},	
+	// -> ModLog
+	{
+		command: "modlog",
+		command_aliases: [],
+		description: "Sets where the bot should log everything",
+		args: [],
+		admin: false,
+		exec: function(message, params)
+		{
+			const thisConf = bot.settings.get(message.guild.id);
+			thisConf.modLogChannel = `${message.channel.name}`;
+			
+			bot.settings.set(message.guild.id, thisConf);
+			message.channel.send("Sucessfuly changed mod logs!")
+		}
 	},
-
 	// -> Prefix
 	{
 		command: "prefix",
@@ -852,6 +869,7 @@ var commands = [
 		admin: true,
 		exec: function(message, params)
 		{
+
 			// > New prefix
 			let newPrefix = params[0];
 
@@ -864,7 +882,7 @@ var commands = [
 				_fs.writeFile("./settings.json", JSON.stringify(config, null, 4), (err) => console.error);
 				message.channel.send(":white_check_mark: Prefix updated to **" + config.handles.prefix + "**");
 			}
-		}
+			}
 	}
 	
 ];
@@ -941,16 +959,40 @@ guild.createChannel('welcome', 'text')
   .catch(console.error);
 });
 
+bot.settings = new Enmap({name: 'settingsmodlogs', persistent: true});
+
+const defaultSettings = {
+  modLogChannel: "mod-log"
+}
+
+bot.on("message", (message) => {
+  if (message.content === "Snoopy Find The Log Channel") {
+    const thisConf = bot.settings.get(message.guild.id);
+      const channel = message.guild.channels.find('name', `${thisConf.modLogChannel}`);
+if (!channel) return;
+channel.send("test");
+  }});
+
 bot.on('ready', (message) => {
+	bot.user.setUsername("Snoopy");
 	console.log("---------------Bot info--------------");
     console.log(`Bot name: ${bot.user.username}`);
     console.log(`Servers: ${bot.guilds.size}`);
     console.log(`Users: ${bot.users.size}`);
     console.log("--------------------------------------");
-	bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`)
+	bot.user.setGame(`Type -help for help! | Version 0.5.0 | in ${bot.guilds.size} servers!`);
+
+	bot.guilds.forEach((g) => {
+    if (!bot.settings.has(g.id)) {
+      bot.settings.set(g.id, defaultSettings);
+    }
+  });
+
+	handleMusic_Setup();
 	});
 
-bot.login(process.env.BOT_TOKEN);
+bot.login("MzY5NjgxOTQyNzU0NDkyNDE2.DMgVLg.yxqxMyBUHgghuqs9DgH27jq1CDU");
+// bot.login(process.env.BOT_TOKEN);
 //-------------------------->
 // -> Functionality
 function handleCommand(message, text)
@@ -1168,7 +1210,7 @@ function handleMusic_SearchYouTubeVideo(query, callback)
 
 function handleMusic_SearchPlaylist(query, callback)
 {
-	_request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + config.tokens.youtube_api, function(error, response, body)
+	_request("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=" + encodeURIComponent(query) + "&key=" + config.tokens.youtube_api, function(error, response, body)
 	{
 		var resp = JSON.parse(body);
         if(resp.items.length > 0)
